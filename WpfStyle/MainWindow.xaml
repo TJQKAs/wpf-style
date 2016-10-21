@@ -1,0 +1,141 @@
+﻿<Window x:Class="WpfStyle.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfStyle"
+        mc:Ignorable="d" x:Name="myWindow"
+        Title="MainWindow" Height="600" Width="1280">
+    <Grid Style="{DynamicResource ResourceKey=GridStyle}" Opacity="0.9">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Style="{DynamicResource ResourceKey=TopStackPanelStyle}" Margin="0 0 0 3" >
+            <Label Width="75" Content="Zoom" Style="{DynamicResource ResourceKey=LabelStyle}"/>
+            <ComboBox Width="75" Style="{DynamicResource ResourceKey=ComboBoxStyle}" SelectedIndex="4" SelectionChanged="sizeBox_SelectionChanged">
+                <ComboBoxItem Style="{DynamicResource ResourceKey=ComboboxItemStyle}">200</ComboBoxItem>
+                <ComboBoxItem Style="{DynamicResource ResourceKey=ComboboxItemStyle}">175</ComboBoxItem>
+                <ComboBoxItem Style="{DynamicResource ResourceKey=ComboboxItemStyle}">150</ComboBoxItem>
+                <ComboBoxItem Style="{DynamicResource ResourceKey=ComboboxItemStyle}">125</ComboBoxItem>
+                <ComboBoxItem Style="{DynamicResource ResourceKey=ComboboxItemStyle}">100</ComboBoxItem>
+                <ComboBoxItem Style="{DynamicResource ResourceKey=ComboboxItemStyle}">75</ComboBoxItem>
+                <ComboBoxItem Style="{DynamicResource ResourceKey=ComboboxItemStyle}">50</ComboBoxItem>
+                <ComboBoxItem Style="{DynamicResource ResourceKey=ComboboxItemStyle}">25</ComboBoxItem>
+            </ComboBox>
+            <Label Width="75" Content="Style" Style="{DynamicResource ResourceKey=LabelStyle}"/>
+            <ComboBox Width="75" x:Name="stylesBox"  SelectedIndex="0" SelectionChanged="stylesBox_SelectionChanged"
+                      Style="{DynamicResource ResourceKey=ComboBoxStyle}">
+                <ComboBoxItem Style="{DynamicResource ResourceKey=ComboboxItemStyle}">Normal</ComboBoxItem>
+                <ComboBoxItem Style="{DynamicResource ResourceKey=ComboboxItemStyle}">Simple</ComboBoxItem>
+                <ComboBoxItem Style="{DynamicResource ResourceKey=ComboboxItemStyle}">Black</ComboBoxItem>
+                <ComboBoxItem Style="{DynamicResource ResourceKey=ComboboxItemStyle}">White</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+
+        <Grid Grid.Row="1" Style="{DynamicResource ResourceKey=GridStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Column="0"  Style="{DynamicResource ResourceKey=LeftStackPanelStyle}">
+                <StackPanel/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Ok" Style="{DynamicResource ResourceKey=ButtonStyle}" Grid.Column="0"/>
+                    <Button Content="Cancel" Style="{DynamicResource ResourceKey=ButtonStyle}" Grid.Column="1"/>
+                    <Button Content="Disabled" Style="{DynamicResource ResourceKey=ButtonStyle}" Grid.Column="2"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Style="{DynamicResource ResourceKey=CenterStackPanelStyle}">
+                        <CheckBox Style="{DynamicResource ResourceKey=CheckBoxStyle}"/>
+                        <CheckBox Style="{DynamicResource ResourceKey=CheckBoxStyle}"/>
+                        <CheckBox Style="{DynamicResource ResourceKey=CheckBoxStyle}" IsEnabled="False"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1"  Style="{DynamicResource ResourceKey=CenterStackPanelStyle}">
+                        <RadioButton Style="{DynamicResource ResourceKey=RadioButtonStyle}"/>
+                        <RadioButton Style="{DynamicResource ResourceKey=RadioButtonStyle}"/>
+                        <RadioButton Style="{DynamicResource ResourceKey=RadioButtonStyle}" IsEnabled="False"/>
+                    </StackPanel>
+                </Grid>
+                <StackPanel>
+                    <TextBox Style="{DynamicResource ResourceKey=TextBoxStyle}"/>
+                    <PasswordBox Style="{DynamicResource ResourceKey=PasswordBoxStyle}"/>
+                </StackPanel>
+
+                <ScrollViewer Style="{DynamicResource ResourceKey=ScrollViewerStyle}">
+                    <ListBox Style="{DynamicResource ResourceKey=ListBoxStyle}">
+                        <ListBoxItem Style="{DynamicResource ResourceKey=ListBoxItemStyle}"/>
+                        <ListBoxItem Style="{DynamicResource ResourceKey=ListBoxItemStyle}"/>
+                        <ListBoxItem Style="{DynamicResource ResourceKey=ListBoxItemStyle}"/>
+                        <ListBoxItem Style="{DynamicResource ResourceKey=ListBoxItemStyle}"/>
+                        <ListBoxItem Style="{DynamicResource ResourceKey=ListBoxItemStyle}"/>
+                        <ListBoxItem Style="{DynamicResource ResourceKey=ListBoxItemStyle}"/>
+                        <ListBoxItem Style="{DynamicResource ResourceKey=ListBoxItemStyle}"/>
+                        <ListBoxItem Style="{DynamicResource ResourceKey=ListBoxItemStyle}"/>
+                        <ListBoxItem Style="{DynamicResource ResourceKey=ListBoxItemStyle}"/>
+                        <ListBoxItem Style="{DynamicResource ResourceKey=ListBoxItemStyle}"/>
+                        <ListBoxItem Style="{DynamicResource ResourceKey=ListBoxItemStyle}"/>
+                        <ListBoxItem Style="{DynamicResource ResourceKey=ListBoxItemStyle}"/>
+                    </ListBox>
+                </ScrollViewer>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1"  Style="{DynamicResource ResourceKey=CenterStackPanelStyle}" Margin="0,0,-0.001,0">
+                <StackPanel Style="{DynamicResource ResourceKey=VerticalStackPanelStyle}">
+                    <Slider x:Name="SliderOne" Style="{DynamicResource ResourceKey=SliderStyle}">
+                    </Slider>
+                    <ProgressBar Style="{DynamicResource ResourceKey=ProgressBarStyle}" 
+                                     Value="{Binding ElementName=SliderOne, Path=Value, Mode=OneWay}"
+                                     IsIndeterminate="{Binding ElementName=CheckBoxInd, Path=IsChecked, Mode=OneWay}" BorderThickness="0.75,1,1,0.75" >
+
+                    </ProgressBar>
+                    <CheckBox x:Name="CheckBoxInd" Style="{DynamicResource ResourceKey=CheckBoxStyle}" Content="IsIndeterminate" IsChecked="False"/>
+                </StackPanel>
+                <StackPanel Style="{DynamicResource ResourceKey=VerticalStackPanelStyle}">
+                    <ComboBox Style="{DynamicResource ResourceKey=ComboBoxStyle}" Margin="50 20 50 0" SelectedIndex="0">
+                        <ComboBoxItem Style="{DynamicResource ResourceKey=ComboboxItemStyle}"  Content="ComboBoxItem"/>
+                        <ComboBoxItem Style="{DynamicResource ResourceKey=ComboboxItemStyle}"  Content="Normal one"/>
+                        <ComboBoxItem Style="{DynamicResource ResourceKey=ComboboxItemStyle}"  Content="Normal two"/>
+                        <ComboBoxItem Style="{DynamicResource ResourceKey=ComboboxItemStyle}"  Content="Normal three"/>
+                        <ComboBoxItem Style="{DynamicResource ResourceKey=ComboboxItemStyle}"  Content="Normal four"/>
+                    </ComboBox>
+                    <GroupBox Style="{DynamicResource ResourceKey=GroupBoxStyle}">
+                    </GroupBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Column="3"  Style="{DynamicResource ResourceKey=RightStackPanelStyle}">
+                <StackPanel Style="{DynamicResource ResourceKey=VerticalStackPanelStyle}">
+                    <Expander Style="{DynamicResource ResourceKey=ExpanderStyle}">
+                        <ListBox Style="{DynamicResource ResourceKey=ListBoxStyle}">
+                            <ListBoxItem Style="{DynamicResource ResourceKey=ListBoxItemStyle}"/>
+                            <ListBoxItem Style="{DynamicResource ResourceKey=ListBoxItemStyle}"/>
+                            <ListBoxItem Style="{DynamicResource ResourceKey=ListBoxItemStyle}"/>
+                            <ListBoxItem Style="{DynamicResource ResourceKey=ListBoxItemStyle}"/>
+                            <ListBoxItem Style="{DynamicResource ResourceKey=ListBoxItemStyle}"/>
+                            <ListBoxItem Style="{DynamicResource ResourceKey=ListBoxItemStyle}"/>
+                            <ListBoxItem Style="{DynamicResource ResourceKey=ListBoxItemStyle}"/>
+                            <ListBoxItem Style="{DynamicResource ResourceKey=ListBoxItemStyle}"/>
+                            <ListBoxItem Style="{DynamicResource ResourceKey=ListBoxItemStyle}"/>
+                            <ListBoxItem Style="{DynamicResource ResourceKey=ListBoxItemStyle}"/>
+                            <ListBoxItem Style="{DynamicResource ResourceKey=ListBoxItemStyle}"/>
+                            <ListBoxItem Style="{DynamicResource ResourceKey=ListBoxItemStyle}"/>
+                        </ListBox>
+                    </Expander>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
